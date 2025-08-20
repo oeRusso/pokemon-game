@@ -10,7 +10,7 @@
         <h3>{{ ramdomPokemon}}</h3>
 
         <!-- pokemon picture -->
-        <PokemonPicture :pokemon-id="ramdomPokemon.id" />
+        <PokemonPicture :pokemon-id="ramdomPokemon.id" :show-pokemon="gameStatus === GameStatus.Playing" />
         <!-- pokemon options -->
         <PokemonOptions/> 
 
@@ -23,8 +23,9 @@
 import PokemonOptions from '../components/PokemonOptions.vue';
 import PokemonPicture from '../components/PokemonPicture.vue';
 import { usePokemonGame } from '../composables/usePokemonGame';
+import { GameStatus } from '../interfaces';
 
 
-const {ramdomPokemon, isLoading} = usePokemonGame()
+const {ramdomPokemon, isLoading, gameStatus} = usePokemonGame()
 
 </script>

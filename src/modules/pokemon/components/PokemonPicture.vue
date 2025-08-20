@@ -1,12 +1,7 @@
 <template name="component-name">
     <section>
-        <img 
-        :src="pokemonImage" alt=""
-        class="brightness-0"
-        />
-
-        
-        
+        <img v-if="!showPokemon" :src="pokemonImage" alt="" class="brightness-0 h-[200px]" />
+        <img v-else :src="pokemonImage" alt=" Pokemon image" class="fade-in h-[200px]" />
     </section>
 </template>
 
@@ -15,9 +10,12 @@ import { computed } from 'vue';
 
 interface props {
     pokemonId: number;
-}	
+    showPokemon?: boolean;
+}
 
-const props = defineProps <props>();
+const props = withDefaults(defineProps<props>(), {
+    showPokemon: false,
+});
 
 const pokemonId = props.pokemonId;
 const pokemonImage = computed(
@@ -30,8 +28,7 @@ img {
     user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
-    -webkit-user-drag:none;
-    -webkit-user-select:none;
+    -webkit-user-drag: none;
+    -webkit-user-select: none;
 }
-
 </style>
