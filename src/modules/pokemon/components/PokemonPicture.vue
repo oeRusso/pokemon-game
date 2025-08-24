@@ -1,6 +1,6 @@
 <template name="component-name">
     <section>
-        <img v-if="!showPokemon" :src="pokemonImage" alt="" class="brightness-0 h-[200px]" />
+        <img v-if="showPokemon" :src="pokemonImage" alt="" class="brightness-0 h-[200px]" />
         <img v-else :src="pokemonImage" alt=" Pokemon image" class="fade-in h-[200px]" />
     </section>
 </template>
