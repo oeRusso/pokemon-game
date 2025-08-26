@@ -31,13 +31,13 @@ export const usePokemonGame = () => {
     return pokemonsArray.sort(() => Math.random() - 0.5);
   };
 
-  const getNextOptions = (howMany:number = 4) => {
+  const getNextRound = (howMany:number = 4) => {
     gameStatus.value = GameStatus.Playing
     pokemonOptions.value = pokemons.value.slice(0, howMany)
     pokemons.value = pokemons.value.slice(howMany)
   };
 
-  const checkAnswer = (id:number) =>{
+  const checkAnswer = (id:number) => {
     const hasWon =  ramdomPokemon.value.id === id;
     if(hasWon){
       gameStatus.value = GameStatus.Won
@@ -52,7 +52,7 @@ export const usePokemonGame = () => {
   }
   onMounted(async () => {
     pokemons.value = await getPokemons();
-    getNextOptions();
+    getNextRound();
     console.log(pokemonOptions.value)
   });
 
@@ -61,8 +61,8 @@ export const usePokemonGame = () => {
     isLoading,
     pokemonOptions,
     ramdomPokemon,
-    checkAnswer,
     // methods
-    getNextOptions,
+    getNextRound,
+    checkAnswer,
   };
 };
